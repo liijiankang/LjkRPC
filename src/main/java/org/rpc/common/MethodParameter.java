@@ -1,4 +1,4 @@
-package org.rpc;
+package org.rpc.common;
 
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import java.io.ObjectInputStream;
 /**
  * @author jiankang Li
  * @ClassName MethodParameter.java
- * @Description TODO
+ * @Description Request对象
  * @createTime 2021年02月08日 10:55:00
  */
 @Data

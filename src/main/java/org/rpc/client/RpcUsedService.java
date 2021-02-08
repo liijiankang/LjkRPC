@@ -1,4 +1,6 @@
-package org.rpc;
+package org.rpc.client;
+
+import org.rpc.common.MethodParameter;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
@@ -9,7 +11,7 @@ import java.util.Map;
 /**
  * @author jiankang Li
  * @ClassName RpcUsedService.java
- * @Description TODO
+ * @Description 客户端 - 服务订阅
  * @createTime 2021年02月08日 11:05:00
  */
 public class RpcUsedService {
