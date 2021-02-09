@@ -33,6 +33,12 @@ public class RpcUsedService {
         try {
             RpcInvocationHandler handler = new RpcInvocationHandler();
             handler.setClazz(clazz);
+            /**
+             * 动态代理
+             * 用clazz.getClassLoader加载代理对象
+             * clazz：动态代理类需要实现的接口
+             * handler：动态代理方法在执行时，会调用handler里面的invoke方法去执行
+             */
             Object proxyInstance = Proxy.newProxyInstance(clazz.getClassLoader(), new Class<?>[]{clazz}, handler);
             proxyObjectMap.put(className, proxyInstance);
             // 然后需要包装起来
@@ -49,6 +55,7 @@ public class RpcUsedService {
     class RpcInvocationHandler implements InvocationHandler {
 
         private Class clazz;
+
         public void setClazz(Class clazz) {
             this.clazz = clazz;
         }
@@ -57,12 +64,10 @@ public class RpcUsedService {
         public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
             // 实际上proxy没啥用处，不需要真正的反invoke射
             MethodParameter methodParameter = new MethodParameter();
-
             methodParameter.setClassName(clazz.getName());
             methodParameter.setMethodName(method.getName());
             methodParameter.setArguments(args);
             methodParameter.setParameterTypes(method.getParameterTypes());
-
             return ioClient.invoke(methodParameter);
         }
     }

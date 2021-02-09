@@ -70,6 +70,7 @@ public class IOService implements Runnable{
                 MethodParameter methodParameter = MethodParameter.convert(inputStream);
                 Object result = rpcExploreService.invoke(methodParameter);
                 ObjectOutputStream output = new ObjectOutputStream(outputStream);
+                System.out.println("发送处理结果："+result.toString());
                 output.writeObject(result);
             } catch (Exception e) {
                 e.printStackTrace();

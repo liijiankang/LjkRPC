@@ -31,7 +31,6 @@ public class Client {
                     int a = new Random().nextInt(100);
                     int b = new Random().nextInt(100);
                     int c = helloworld.add(a, b);
-                    // .add 操作就是屏蔽了所有的细节，提供给客户端使用的方法
                     System.out.println("a: " + a + ", b:" + b + ", c=" + c + ", 耗时:" + (System.currentTimeMillis() - start));
                 }).start();
             }

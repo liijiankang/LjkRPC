@@ -33,9 +33,6 @@ public class RpcExploreService {
 
         try {
             Object result = method.invoke(object, methodParameter.getArguments());
-
-            System.out.println(methodParameter);
-
             return result;
         } catch (Exception e) {
             throw new RuntimeException("invoke方法执行失败:" + e.getMessage());
