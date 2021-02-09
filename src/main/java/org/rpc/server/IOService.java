@@ -26,7 +26,7 @@ public class IOService implements Runnable{
         this.port = port;
         this.serverSocket = new ServerSocket(port);
         this.flag = true;
-        System.out.println("服务端启动了");
+        System.out.println("初始化IOService，服务端启动了");
 
         // 优雅关闭
         Runtime.getRuntime().addShutdownHook(new Thread() {
@@ -44,6 +44,7 @@ public class IOService implements Runnable{
         while (flag) {
             Socket socket = null;
             try {
+                System.out.println("等待接收数据。");
                 socket = serverSocket.accept();
             } catch (IOException e) {
             }
@@ -63,6 +64,7 @@ public class IOService implements Runnable{
         @Override
         public void run() {
             try {
+                System.out.println("处理接收的数据。");
                 InputStream inputStream = socket.getInputStream();
                 OutputStream outputStream = socket.getOutputStream();
                 MethodParameter methodParameter = MethodParameter.convert(inputStream);

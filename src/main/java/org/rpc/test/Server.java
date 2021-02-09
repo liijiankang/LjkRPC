@@ -16,7 +16,7 @@ public class Server {
     public static void main(String[] args) {
         RpcExploreService rpcExploreService = new RpcExploreService();
         // 传入的字符串是接口的全名称
-        rpcExploreService.explore("new2019.rpc.rpc_v1.expore.Helloworld", new HelloWorldImpl());
+        rpcExploreService.explore("org.rpc.impl.Helloworld", new HelloWorldImpl());
 
         try {
             Runnable ioService = new IOService(rpcExploreService, 10001);

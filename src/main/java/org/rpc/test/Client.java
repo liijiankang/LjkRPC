@@ -17,7 +17,6 @@ public class Client {
     public static void main(String[] args) {
         RpcUsedService rpcUsedService = new RpcUsedService();
         rpcUsedService.register(Helloworld.class);
-
         try {
             IOClient ioClient = new IOClient("127.0.0.1", 10001);
             // 网络套接字链接 同上是10001端口
@@ -25,9 +24,8 @@ public class Client {
 
             Helloworld helloworld = rpcUsedService.get(Helloworld.class);
             // 生成的本地代理对象 proxy
-
-            for(int i=0; i< 100; i++) {
-                // 开启了100个县城
+            for(int i=0; i< 1; i++) {
+                // 开启了100个线程
                 new Thread(() -> {
                     long start = System.currentTimeMillis();
                     int a = new Random().nextInt(100);
@@ -37,7 +35,6 @@ public class Client {
                     System.out.println("a: " + a + ", b:" + b + ", c=" + c + ", 耗时:" + (System.currentTimeMillis() - start));
                 }).start();
             }
-
         } catch (IOException e) {
         }
     }
